@@ -53,13 +53,15 @@ CREATE TABLE IF NOT EXISTS reservation(
     id INT AUTO_INCREMENT,
     user_id INT NOT NULL,
     pack_id INT NOT NULL,
+    service_id INT NOT NULL,
     totalPrice VARCHAR(250) NOT NULL,
     date VARCHAR(250) NOT NULL,
     hour VARCHAR(250) NOT NULL,
     payment BOOLEAN NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (pack_id) REFERENCES pack(id)
+    FOREIGN KEY (pack_id) REFERENCES pack(id),
+    FOREIGN KEY (service_id) REFERENCES service(id)
 );
 
 CREATE TABLE admin(
@@ -74,10 +76,8 @@ CREATE TABLE IF NOT EXISTS sessions(
     session VARCHAR(250) NOT NULL,
     logedInAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     user_id INT NOT NULL,
-    admin_id INT NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (admin_id) REFERENCES admin(id)
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 

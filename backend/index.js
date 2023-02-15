@@ -5,7 +5,6 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
 //Authentification Crud
-const {sessionRouter}=require('./Router/AuthRouter/sessionRouter')
 const {userRouter}=require('./Router/AuthRouter/userRouter')
 
 // Center Crud
@@ -42,11 +41,10 @@ app.use(
     })
 )
 
-
+app.use(cookieParser())
 app.use(express.json())
 
 //Authentification Crud
-app.use('/',sessionRouter)
 app.use('/',userRouter)
 
 // Center Crud
