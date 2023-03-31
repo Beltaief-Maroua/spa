@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS spa;
+-- DROP DATABASE IF EXISTS spa;
 CREATE DATABASE IF NOT EXISTS spa;
 USE spa;
 
@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS center(
     centerMail VARCHAR(250) NOT NULL,
     adress VARCHAR(250) NOT NULL,
     centerImage VARCHAR(250) NOT NULL,
-    centerVideo VARCHAR(250) NOT NULL,
     openingTime VARCHAR(250) NOT NULL,
     PRIMARY KEY(id)
 );
@@ -20,7 +19,6 @@ CREATE TABLE IF NOT EXISTS service(
     serviceName VARCHAR(250) NOT NULL,
     servicePrice INT NOT NULL,
     serviceImage VARCHAR(250) NOT NULL,
-    serviceVideo VARCHAR(250) NOT NULL,
     serviceDescription VARCHAR(250) NOT NULL,
     PRIMARY KEY(id)
 );
@@ -30,7 +28,6 @@ CREATE TABLE IF NOT EXISTS pack(
     packName VARCHAR(250) NOT NULL,
     packPrice VARCHAR(250) NOT NULL,
     packImage VARCHAR(250) NOT NULL,
-    packVideo VARCHAR(250) NOT NULL,
     packDescription VARCHAR(250) NOT NULL,
     PRIMARY KEY(id)
 );
@@ -48,23 +45,25 @@ CREATE TABLE IF NOT EXISTS user(
     PRIMARY KEY(id)
 );
 
+-- DROP TABLE IF EXISTS reservation;
 
 CREATE TABLE IF NOT EXISTS reservation(
     id INT AUTO_INCREMENT,
     user_id INT NOT NULL,
-    pack_id INT NOT NULL,
-    service_id INT NOT NULL,
+    userName VARCHAR(250) NOT NULL,
+    userMail VARCHAR(250) NOT NULL,
+    userPhone VARCHAR(250) NOT NULL,
+    packName VARCHAR(250) NOT NULL,
+    serviceName VARCHAR(250) NOT NULL,
     totalPrice VARCHAR(250) NOT NULL,
     date VARCHAR(250) NOT NULL,
     hour VARCHAR(250) NOT NULL,
     payment BOOLEAN NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (pack_id) REFERENCES pack(id),
-    FOREIGN KEY (service_id) REFERENCES service(id)
+    PRIMARY KEY(id, user_id)
 );
 
-CREATE TABLE admin(
+
+CREATE TABLE IF NOT EXISTS admin(
     id INT NOT NULL AUTO_INCREMENT,
     amdinMail VARCHAR(200) NOT NULL,
     adminPassword VARCHAR(200) NOT NULL,
@@ -78,6 +77,15 @@ CREATE TABLE IF NOT EXISTS sessions(
     user_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
+);
+CREATE TABLE IF NOT EXISTS contact(
+    id INT AUTO_INCREMENT,
+    subject VARCHAR(250) NOT NULL,
+    message VARCHAR(250) NOT NULL,
+    user_id INT NOT NULL,
+    userName VARCHAR(250) NOT NULL,
+    userMail VARCHAR(250) NOT NULL,
+    PRIMARY KEY(id, user_id)
 );
 
 

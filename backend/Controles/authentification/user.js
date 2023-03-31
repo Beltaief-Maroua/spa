@@ -6,6 +6,7 @@ const session=require ('../authentification/session')
 
 module.exports={
   CreateUser:((req,res)=>{
+    console.log(req.body)
    let lastAtPos = req.body.userMail.lastIndexOf('@');
        let lastDotPos = req.body.userMail.lastIndexOf('.');
      let passwordHashed=crypto.createHash('sha256').update(req.body.userPassword, 'utf8').digest('hex')
@@ -35,7 +36,6 @@ module.exports={
  
  
    VerifyUser :(req,res)=>{
-    console.log(req.body)
      var passwordHashed = crypto.createHash('sha256').update(req.body.userPassword, 'utf8').digest('hex')
      const query=`select * from user where userMail="${req.body.userMail}"`
      connection.query(query,(error,results)=>{
@@ -54,7 +54,6 @@ module.exports={
 
 
    Logout:(req,res)=>{
-     console.log(req.cookies)
      session.Delete(req.cookies.test).then((result)=>{
        if(result){
          res.status(200).send('user logout')
@@ -66,7 +65,7 @@ module.exports={
 
    
    GetUser:(req,res)=>{
-    const query=`select * from user where id="${req.params.id}"`
+    const query=`select * from user where id=${req.params.id}`
     connection.query(query,(error,result)=>{
       error ? res.status(500).send(error) : res.status(200).send(result)
     })

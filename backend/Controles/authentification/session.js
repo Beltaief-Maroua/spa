@@ -15,14 +15,12 @@ module.exports = {
         return new Promise((resolve,reject)=>{
       connection.query('SELECT * FROM sessions WHERE session=?',[session],
       (err,results)=>{
-        // console.log(results,'sesssionss')
           err ? reject(err):resolve(results)
       } )
      
         })
     },
     Delete:(session)=>{
-        console.log(session)
         return new Promise((resolve,reject)=>{
             connection.query('DELETE FROM sessions WHERE session=?',[session],
             (err,results)=>{

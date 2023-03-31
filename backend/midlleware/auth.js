@@ -10,7 +10,12 @@ module.exports={
                     expires: new Date(new Date().getTime() + 86400 * 1000),
                     httpOnly: false,
                     test: false
-                }).send([session,"success",user_id])
+                }).json(
+                {session,
+                msg:"success",
+                user_id
+                }
+                )
             }else{
                 res.status(500).send('user not found')
             }

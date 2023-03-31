@@ -1,0 +1,98 @@
+.home{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(217, 216, 214);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-size: cover;
+ }
+ .appbar{
+   background-color: rgb(217, 216, 214)
+ }
+ 
+ .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ 
+.card{
+   
+   height: 400px;
+   width: 400px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.buttonGestion{
+   display: flex;
+   justify-content: space-around;
+   margin: 20px;
+}
+
+.delete{
+   background-color: rgb(212, 63, 63) !important;
+}
+
+/* .edit{
+   background-color: #00964d !important;
+} */
+
+.title{
+  font-size: larger;
+  font-weight: bold;
+  color: #00aeef;
+}
+
+.name{
+   font-weight: bold;
+}
+
+.price{
+   display: flex;
+   justify-content: flex-end;
+   font-weight: bold;
+   font-size: larger;
+
+}
+.addService{
+   background-color: rgb(217, 216, 214);
+   display:flex;
+   justify-content: center;
+   margin-bottom: 10px;
+}
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: rgb(217, 216, 214);
+   color: #fff;
+   padding: 10px;
+   width: 100%;
+}
+.navbar-nav {
+   
+   justify-content: flex-end;
+   align-items: center;
+   display: inline-block;
+   margin: 0;
+}
+
+
+.nav-item {
+   margin-right: 10px;
+   display: inline-block;
+}
+
+.nav-link {
+   color: #fff;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.nav-link:hover {
+   text-decoration: underline;
+}
+ 
